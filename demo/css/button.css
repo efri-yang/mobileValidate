@@ -1,0 +1,144 @@
+/**
+ * -webkit-user-select:禁止选中复制;
+ * touch-action：移除特定元素或整个文档的触发延迟
+ */
+.zbtn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+/**
+ * 注意button的状态：选中active focus blur
+ * 
+ * .zbtn:focus 给有foucs的html标签是用
+ * :focus 有<button>,<input>,<select>
+ * 它们在focus的时候会添加.focus class
+ * 它们在data-parter的情况下会添加active
+ * 正常元素都会有：:active,ie7不支持这个属性
+ */
+
+.zbtn.active
+ {
+  outline: thin dotted;
+  outline: 0px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.zbtn:active,
+.zbtn.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+/**
+ * zbtn[disabled] 是表单选择器 拥有选择 disabled="disabled" 类型
+ * 
+ * fieldset[disabled] .zbtn 考虑删除
+ */
+.zbtn.disabled{
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  opacity: .65;
+}
+/**
+ *按钮的大小
+ */
+.zbtn-full{
+  display: block;
+  width: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.zbtn-lg{
+  padding: 9px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
+
+[data-roler="button"] > .zbtn input[type="radio"],
+[data-roler="button"] > .zbtn input[type="radio"],
+[data-roler="button"] > .zbtn input[type="checkbox"],
+[data-roler="button"] > .zbtn input[type="checkbox"] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
+}
+/**
+ *默认按钮
+ */
+
+
+/**
+ *主按钮
+*/
+.zbtn-primary{
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.zbtn-primary:not(label):hover,
+.zbtn-primary.active{
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+.zbtn-primary.active{
+  background-image: none;
+}
+.zbtn-primary.disabled,
+.zbtn-primary.disabled.active{
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+/**
+ * buttonset button->checkbox button->raido
+ * @type {[type]}
+ */
+.zbtn-group:after{
+    content:"";
+    display:table;
+    clear:both
+}
+.zbtn-group > .zbtn{
+  position: relative;
+  border-radius: 0px;
+  float: left;
+  border:none;
+}
+.zbtn-group > .zbtn:first-child:not(:last-child){
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.zbtn-group > .zbtn:last-child:not(:first-child){
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+
+
+
+
+
+
+

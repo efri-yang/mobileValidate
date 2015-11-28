@@ -1,0 +1,267 @@
+
+.zform-fieldset{
+	margin-bottom: 10px;
+}
+.zform-control{
+	margin-bottom: 15px;
+}
+.control-verifycode  img{
+	max-width: 100%;
+}
+.zform input[type="number"]:focus, 
+.zform input[type="search"]:focus,
+.zform input[type="text"]:focus,
+.zform input[type="password"]:focus,
+.zform input[type="datetime"]:focus,
+.zform input[type="datetime-local"]:focus,
+.zform input[type="date"]:focus, 
+.zform input[type="month"]:focus,
+.zform input[type="time"]:focus,
+.zform input[type="week"]:focus,
+.zform input[type="email"]:focus,
+.zform input[type="url"]:focus,
+.zform input[type="tel"]:focus,
+.zform input[type="color"]:focus,
+.zform select:focus,
+.zform textarea:focus{
+	outline: 0px none;
+}
+
+.zform input:disabled,.zform select:disabled{
+	border-color:#eee;
+}
+.zform input[type="checkbox"]:checked:disabled,.zform input[type="radio"]:checked:disabled{
+	background-color:#18b4ed
+}
+/**
+ * 表单字段
+ */
+.field-text{
+	display:inline-block;
+	width: 100%;
+  	height: 44px;
+  	padding: 6px 5px;
+  	line-height: 1.42857143;
+  	background-color: #fff;
+  	background-image: none;
+  	border: 1px solid #ccc;
+  	box-sizing:border-box;
+	-webkit-box-sizing:border-box; /* Safari */
+}
+.field-area{
+	width: 100%;
+	padding: 5px;
+	vertical-align: top;
+	background-color: #fff;
+  	background-image: none;
+  	border: 1px solid #ccc;
+  	box-sizing:border-box;
+	-webkit-box-sizing:border-box; /* Safari */
+}
+.field-select{
+	-webkit-appearance: none !important;
+  	-webkit-border-radius: 0;
+  	border-radius: 0;
+	border: 1px solid #CCC;
+	padding: 0 5px;
+	height: 44px;
+	line-height: 44px;
+	width: 100%;
+	color:#666;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box; /* Safari */
+	background: #ffffff url('../images/select_arrow.png') no-repeat 100% center;
+}
+.field-check,.field-radio{
+	-webkit-appearance: none;
+    width: 20px;
+    height:20px;
+   
+    border:1px solid #ccc;
+    text-align: center;
+    vertical-align: middle;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, .125);
+}
+.field-check{
+	 border-radius: 4px;
+}
+.field-radio{
+	border-radius:100%;
+}
+.field-check:checked,.field-radio:checked{
+    border: 0;
+    background:#18b4ed;
+    color: #fff;
+}
+.field-check:checked:before{
+	color:#fff;
+    content: "\e60a";
+    font-size:22px;
+    line-height: 20px;
+    vertical-align:top;
+}
+.field-radio:checked:before{
+	content: "\e609";
+	font-size: 18px;
+    line-height: 20px;
+	vertical-align:top;
+}
+
+
+/**
+ * icon内嵌型(左边或者是右边)
+ */
+.zform-control-icon{
+	position: relative;
+}
+.zform-control-icon .control-icon i{
+	font-size: 28px;
+	line-height: 44px;
+}
+.zform-control-icon.zform-control-left .control-icon{
+	position: absolute;
+	height: 100%;
+	left:5px;
+	color: #999;
+}
+.zform-control-icon.zform-control-left .control-field .field-text{
+	padding-left: 40px
+}
+
+.zform-control-icon.zform-control-right .control-icon{
+	position: absolute;
+	height: 100%;
+	right:5px;
+	color: #999;
+}
+.zform-control-icon.zform-control-right .control-field .field-text{
+	padding-right: 40px
+}
+
+
+
+
+/**
+ * 验证码
+ */
+.zform-control-verifycode{
+	position: relative;
+}
+.zform-control-verifycode .control-field{
+	padding-right: 90px;
+}
+.zform-control-verifycode .control-verifycode{
+	position: absolute;
+	right: 0;
+	top:0;
+	width: 80px;
+}
+/**
+ * 单选框和复选框
+ */
+.zform-control-radiocheck{
+		margin-bottom: 12px
+}
+.zform-control-radiocheck .control-label{
+		line-height:20px !important;
+}
+.zform-control-radiocheck .control-field .field-radio,
+.zform-control-radiocheck .control-field .field-check{
+	margin-right: 5px;
+}
+.zform-control-radiocheck .control-field label{
+	display: inline-block;
+	margin-right: 15px;
+	line-height: 20px;
+	margin-bottom: 5px;
+}
+/**
+ * 垂直类型
+ */
+.zform-vertical .zform-control .control-label{
+	padding: 10px 0 8px;
+	display: block;
+}
+/**
+ * 水平类型
+ */
+.zform-horizontal .zform-control{
+	position: relative;
+}
+.zform-horizontal .zform-control .control-label{
+	line-height: 44px;
+	position: absolute;
+	left:0;
+	top:0;
+	min-width: 70px;
+	text-align: right;
+}
+.zform-horizontal .zform-control .control-label-area{
+	line-height:normal;
+}
+.zform-horizontal .zform-control .control-field{
+	padding-left: 70px;
+}
+/**
+ * group类型
+ */
+.zform-group .zform-control{
+	position: relative;
+	margin-bottom:0;
+	border-left:1px solid #ccc;
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	background: #fff;
+}
+.zform-group .zform-control:after{
+	content:"";
+    display:table;
+    clear:both;
+}
+.zform-group .zform-control:first-child{
+	border-top:1px solid #ccc;
+}
+.zform-group .zform-control .control-label{
+	line-height: 44px;
+	float: left;
+	padding:0 10px;
+}
+.zform-group .zform-control .control-field{
+	float: left;
+}
+.zform-group .zform-control .field-text{
+	border:none;
+}
+.zform-group.zform-radius .zform-control:first-child{
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+.zform-group.zform-radius .zform-control:last-child{
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+
+
+
+
+.zform-borderbottom .zform-control{
+	border-top:none !important;
+	border-left:none !important;
+	border-right:none !important;
+}
+.zform-borderbottom .zform-control .control-field{
+	float: none;
+}
+/**
+ * 圆角处理
+ */
+.zform-radius .field-text,
+.zform-radius .field-area,
+.zform-radius .field-select{
+	border-radius: 4px;
+}
+
+

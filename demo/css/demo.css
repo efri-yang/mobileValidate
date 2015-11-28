@@ -1,0 +1,174 @@
+.demo-container{
+	padding:10px;
+}
+.demo-bgeee{
+	  background: #eeeeee;
+}
+.demo-bgf2f2f2{
+	background:#f2f2f2;
+}
+.demo-bg999{
+	background:#999;
+}
+.demo-bgfff{
+	background: #fff;
+}
+.mg10{margin:10px;}
+.mr5{ margin-right: 5px}
+.mr10{ margin-right:10px}
+.mr15{ margin-right:15px}
+.mr20{ margin-right:20px}
+
+.ml5{ margin-left: 5px}
+.ml10{ margin-left:10px}
+.ml15{ margin-left:15px}
+.ml20{ margin-left:20px}
+
+.mb5{ margin-bottom: 5px}
+.mb10{ margin-bottom:10px}
+.mb15{ margin-bottom:15px}
+.mb20{ margin-bottom:20px}
+
+.mt5{ margin-top: 5px}
+.mt10{ margin-top:10px}
+.mt15{ margin-top:15px}
+.mt20{ margin-top:20px}
+
+.pr5{ padding-right: 5px}
+.pr10{ padding-right: 10px}
+.pr15{ padding-right: 15px}
+.pr20{ padding-right: 20px}
+
+.pl5{ padding-left: 5px}
+.pl10{ padding-left: 10px}
+.pl15{ padding-left: 15px}
+.pl20{ padding-left: 20px}
+.pd10{padding: 10px}
+.pd30{
+	padding: 30px;
+}
+.fb{
+	font-size: bold;
+}
+.clrf60{
+	color: #f60
+}
+
+.align-l{
+	text-align: left;
+}
+.align-c{
+	text-align: center;
+}
+.border-e5e5e5{
+	border:1px solid #e5e5e5;
+}
+.clrfff{
+	color:#fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.tit-h2{
+        font-size: 20px;
+        text-align: left;
+        padding: 15px 10px;
+        border-bottom: 1px solid #e1e1e1;
+}
+.intro-blk-wraper{
+	border:1px solid #F2D9DE;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+.intro-blk{
+	font-size: 16px;
+	text-indent: 2em;
+	padding: 5px 15px;
+	line-height: 2
+}
+.blk-box{
+	border: 1px dashed #cfcfcf
+}
+.blkbox-bd{
+	padding: 15px
+}
+/**
+ *场景秒睡 
+ */
+.situation-box{
+	border:1px solid #cfcfcf;
+}
+
+.situation-box .hd{
+	border-bottom: 1px solid #e5e5e5;
+	background: #eeeeee;
+	height: 38px;
+	line-height:38px;
+	font-size: 16px;
+	color: #333;
+	padding: 0 10px;
+}
+.situation-box .bd{
+	padding: 15px;
+	line-height: 23px;
+}
+
+.demo-table{
+	border:1px solid #e1e1e1;
+	width: 100%;
+	text-align: center;
+	table-layout: fixed;
+	word-break: break-all; 
+	word-wrap:break-word;
+}
+.demo-table th{
+	padding: 8px 10px;
+	background: #EEE;
+}
+.demo-table td,.demo-table th{
+	border:1px solid #e1e1e1;
+}
+.demo-table td{
+	padding:7px 10px;
+}
+.demo-hd-1{
+	border-bottom: 1px solid #e5e5e5;
+    height: 38px;
+    line-height: 38px;
+    font-size: 16px;
+    color: #333;
+    padding: 0 10px;
+}
+.demo-full{
+	height: 100%;
+	width: 100%;
+	display: block;
+}
+.demo-h50{
+	height: 50px;
+	background: #f60;
+}
+.demo-h100{
+	height: 100px;
+	background: #f60;
+}
+.demo-bgf60{
+	background:#f60;
+}
+.demo-whfull{
+	width: 100%;
+	height: 100%;
+}
