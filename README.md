@@ -1,5 +1,5 @@
 # mobileValidate
-mobileValidate是一款针对移动端的表单验证控件，充分考虑到移动端屏幕和空间大小的情况下,它提供了两种表单的验证提示方式，基本满足日常表单的验证需求！
+mobileValidate是一款针对移动端的表单验证控件，充分考虑到移动端屏幕和空间大小的情况下,它提供了两种表单的验证提示方式，基本满足日常表单的验证需求！<a href="http://wnworld.com/mobilevalidate" target="_blank">查看demo<a/>
 
 ##      	目录
 
