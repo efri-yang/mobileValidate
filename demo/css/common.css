@@ -1,3 +1,15 @@
+.fl{
+	float: left;
+}
+.clearboth{
+	clear: both;
+}
+.line-form{
+	line-height: 44px;
+	height: 44px;
+	display: inline-block;
+	vertical-align:top
+}
 /**
  * iconfont的设置
  */

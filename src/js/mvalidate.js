@@ -6,7 +6,8 @@
 		});
 	}else if(typeof define === 'function' && define.cmd){
 		define(['jquery'], function(require,exports,moudles){
-			factory(require('jquery')); // 初始化插件
+			factory(
+			require('jquery')); // 初始化插件
 		})
 	}else{
 		factory(jQuery);
@@ -147,8 +148,11 @@
 		}
 
 		var $describedShowElem=$('[id="' + fieldDescribedby +'"]');
+		//如果找打提示的容器，是第二种类型的验证
 		if($describedShowElem.length > 0 && options.type==2){
+			//如果是change 或者是keyup 同时是第一次输入的时候就不要验证
 			if((event.type=="keyup" || event.type=="change") && (!$describedShowElem.children().length || !$.trim($describedShowElem.text()))){
+
 			}else{					
 				$describedShowElem.html(log || '');
 				fieldValidTypeHand($field,status,options)

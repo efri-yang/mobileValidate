@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<title>ZUI -表单验证控件</title>
+	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css">
+    <link rel="stylesheet" type="text/css" href="css/button.css">
+	<link rel="stylesheet" type="text/css" href="css/validate.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+	<script type="text/javascript" src="js/mvalidate.js"></script>
+	
+</head>
+<body class="demo-bgf2f2f2">
+	<header class="zui-header">
+		<i class="zicon-goback icon-fanhui" onClick="javascript :history.back(-1);"></i>
+		<h1 class="title">表单验证控件</h1>
+	</header>
+	<div class="demo-hd-1 ml10 mr10">验证类型1</div>
+	<div class="zui-mr10 zui-mb10 zui-ml10 demo-bgfff pd10">
+		<form class="zform zform-radius" action="http://www.wnworld.com" id="form1">
+                <fieldset class="zform-fieldset">
+                    <div class="zform-control">
+                        <div class="control-field">
+                            <input type="password" class="field-text" placeholder="请输入用户名" data-required="true" data-descriptions="username">
+                        </div>     
+                    </div>
+                    <div class="zform-control">
+                        <div class="control-field">
+                            <input type="password" id="pwd" class="field-text" placeholder="请输入密码" data-required="true" data-descriptions="password">
+                        </div>     
+                    </div>
+                    <div class="zform-control">
+                        <div class="control-field">
+                            <input type="password" id="confirmpwd" class="field-text"  placeholder="再次输入密码确认" data-required="true" data-descriptions="confirmpassword" data-conditional="confirmpwd">
+                        </div>
+                    </div>
+                    <div class="zform-control">
+                        <div class="control-field">
+                            <input type="text" class="field-text" placeholder="请输入手机号码" data-validate="phone" data-describedby="phone-description">
+                        </div>
+                    </div>
+                    <div class="zform-control">
+                        <div class="control-field">
+                            <input type="text" class="field-text" placeholder="请输入年龄" data-pattern="^[0-9]+$"  data-required="true" data-descriptions="age">
+                        </div>
+                    </div>               
+                    <div class="zform-control">
+                        <div class="control-field">
+                            <select class="field-select" data-required="true" data-descriptions="address" >
+                                <option value="" selected disabled>请选择地址</option>
+                                <option value="1">浙江省</option>
+                                <option value="2">海南省</option>
+                            </select>
+                        </div>        
+                    </div>
+                    <div class="zform-control">
+                        <label class="control-label control-label-area">个人简介：</label>
+                        <div class="control-field">
+                            <textarea class="field-area" rows="4" data-required="true" data-descriptions="intro" ></textarea>
+                        </div>
+                    </div>
+                    <div class="zform-control zform-control-radiocheck">
+                        <label class="control-label">兴趣爱好：</label>
+                        <div class="control-field">
+                            <label>
+                                <input type="checkbox"  name="favourite" class="field-check zicon" data-required="true" data-descriptions="favourite">篮球
+                            </label>    
+                            <label>
+                                <input type="checkbox" name="favourite" class="field-check zicon" data-required="true" data-descriptions="favourite">足球
+                            </label>    
+                            <label>
+                                <input type="checkbox" name="favourite" class="field-check zicon" data-required="true" data-descriptions="favourite">排球
+                            </label>
+                            <label>
+                                <input type="checkbox" name="favourite" class="field-check zicon" data-required="true" data-descriptions="favourite">乒乓球
+                            </label>    
+                        </div>
+                    </div>
+                    <div class="zform-control zform-control-radiocheck">
+                        <label class="control-label">性别：</label>
+                        <div class="control-field">
+                            <label>
+                                <input type="radio" name="sex" class="field-radio  zicon" data-required="true"  data-descriptions="sex">男
+                            </label>    
+                            <label>
+                                <input type="radio"  name="sex" class="field-radio  zicon" data-required="true" data-descriptions="sex">女
+                            </label>    
+                        </div>
+                    </div>
+                    <div class="zform-control clearfix">
+                        <label class="control-label control-label-area fl line-form">验证码：</label>
+                        <div class="control-field fl">
+                            <input type="text" class="field-text" data-required="true" data-conditional="captcha" data-descriptions="captchacode">
+                        </div>
+                        <div class="fl">
+                            <img id="captcha_img" border="1" src="php/captcha.php?r=<?php echo rand();?>" width="100">
+                            <a href="javascript:void(0)" id="captcha_btn" class="line-form">看不清</a>
+                        </div>
+                    </div>
+                </fieldset>
+                <input type="submit" value="提交" class="zbtn zbtn-primary zbtn-full zbtn-lg">    
+        </form>
+	</div>
+	
+	
+
+	
+	<script type="text/javascript">
+   $(function(){
+        $("#captcha_btn").on("click",function(){
+            var src='php/captcha.php?r=Math.random()';
+            $("#captcha_img").attr("src",src);
+        });
+        $.mvalidateExtend({
+            phone:{
+                required : true,   
+                pattern : /^0?1[3|4|5|8][0-9]\d{8}$/,
+                each:function(){                  
+                },
+                descriptions:{
+                    required : '<div class="field-invalidmsg">请输入手机号码</div>',
+                    pattern : '<div class="field-invalidmsg">手机号码格式不正确</div>',
+                    valid : '<div class="field-validmsg">正确</div>'
+                }
+            }
+        });
+        $("#form1").mvalidate({
+            type:1,
+            onKeyup:true,
+            sendForm:true,
+            firstInvalidFocus:false,
+            valid:function(event,options){
+                //点击提交按钮时,表单通过验证触发函数
+                alert("验证通过！接下来可以做你想做的事情啦！");
+                 event.preventDefault();
+            },
+            invalid:function(event, status, options){
+                //点击提交按钮时,表单未通过验证触发函数
+            },
+            eachField:function(event,status,options){
+                //点击提交按钮时,表单每个输入域触发这个函数 this 执向当前表单输入域，是jquery对象
+            },
+            eachValidField:function(val){},
+            eachInvalidField:function(event, status, options){},
+            conditional:{
+                confirmpwd:function(val){
+                    return val==$("#confirmpwd").val();
+                },
+                captcha:function(val){
+                    if(!val && !val.length) return false;
+                    var flag
+                    $.ajax({
+                        url:"php/captchaAjax1.php",
+                        type:"post",
+                        async:false,
+                        data:{captchaCode:val},
+                        success:function(data){
+                            flag=(data==0) ? false : true;
+                            if(!flag){
+                                 $("#captcha_btn").click();
+                            }
+                        }
+                    });
+                    return flag;
+                }
+            },
+            descriptions:{
+                username:{
+                    required : '请输入用户名'
+                },
+                password:{
+                     required : '请输入密码'
+                },
+                confirmpassword:{
+                    required : '请再次输入密码',
+                    conditional : '两次密码不一样'
+                },
+                age : {
+                    required : '请输入年龄',
+                    pattern : '年龄格式不正确'
+                },
+                address:{
+                    required : '请选择地址'
+                },
+                intro:{
+                    required : '请输入个人介绍'
+                },
+                favourite:{
+                    required : '请选择兴趣爱好'
+                },
+                sex:{
+                    required : '请选择性别'
+                },
+                captchacode:{
+                    required : '请输入验证码',
+                    conditional : '您输入的验证码不正确'
+                },
+            }
+        });
+   })
+</script>
+</body>
+</html>
