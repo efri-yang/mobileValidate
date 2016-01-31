@@ -269,6 +269,7 @@
             },
             eachValidField:function(val){},
             eachInvalidField:function(event, status, options){},
+            conditional:{
                 pwd2:function(val,options){
                     $("#confirmpwd2").trigger("keyup."+options.namespace);
                     return true;
