@@ -65,20 +65,20 @@
 			fieldValue =$.trim($field.val()) || "",
 
 		    //*****获取当前字段的data-validate
-			fieldValidate=$field.data("validate"),
+			fieldValidate=$field.attr("data-validate"),
 			validation=(fieldValidate != undefined) ? extend[fieldValidate]:{},
 			//*****获取当前字段的data-required
-			fieldRequired=$field.data("required"),
+			fieldRequired=$field.attr("data-required"),
 			//*****获取当前字段的data-pattern
-			fieldPattern = ($field.data('pattern') || ($.type(validation.pattern) == 'regexp' ? validation.pattern : /(?:)/)),
+			fieldPattern = ($field.attr('data-pattern') || ($.type(validation.pattern) == 'regexp' ? validation.pattern : /(?:)/)),
 
 
 			//*****获取当前字段的data-conditional
-			fieldConditional=$field.data("conditional") || validation.conditional,
+			fieldConditional=$field.attr("data-conditional") || validation.conditional,
 			//*****获取当前字段的data-description
-			fieldDescription=$field.data("descriptions") || validation.descriptions,
+			fieldDescription=$field.attr("data-descriptions") || validation.descriptions,
 			//*****获取当前字段的data-describedby
-			fieldDescribedby=$field.data("describedby") || validation.describedby;
+			fieldDescribedby=$field.attr("data-describedby") || validation.describedby;
 
 			fieldDescription = $.isPlainObject(fieldDescription) ? fieldDescription : (options.descriptions[fieldDescription] || {});
 			fieldRequired=fieldRequired !='' ? (fieldRequired || !!validation.required ) : true;
