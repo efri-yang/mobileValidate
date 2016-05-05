@@ -195,8 +195,14 @@
 	$.extend($,{
 		mvalidateExtend:function(options){
 			return $.extend(extend, options);	
+		},
+		mvalidateTip:function(text){
+			var txt=$.fn.mvalidate.errorTipFormat(text);
+			fieldTooltip.show(txt)
 		}
 	});
+
+
 
 	
 	
@@ -298,4 +304,6 @@
 	$.fn.mvalidate.errorTipFormat=function(text){
 		return '<div class="zvalid-resultformat">'+text+'</div>';
 	}
+
+
 })
