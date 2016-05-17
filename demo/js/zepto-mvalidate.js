@@ -288,9 +288,9 @@
 	$.fn.mvalidateDestroy=function(){
 		var $form=$(this),$fields,
 			dataValidate=$form.data(name);
-		if($form.is('form') && $.isPlainObject(dataValidate) && typeof(dataValidate.options.nameSpace) == 'string') {
+		if($form.is('form') && $.isPlainObject(dataValidate) && typeof(dataValidate.options.namespace) == 'string') {
 			$fields = $form.removeData(name).find(allTypes);
-			$fields.off('.' + dataValidate.options.nameSpace);
+			$fields.off('.' + dataValidate.options.namespace);
 		}	
 		return $form;
 	};
