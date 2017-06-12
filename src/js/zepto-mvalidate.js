@@ -107,7 +107,7 @@
 		 * 只有那些类似type=text的文本框我们才能通过正则表达式去验证pattern,
 		 * 而对于select,radio,checkbox pattern显然是无效的
 		 */
-		if($field.is(type[0])) {
+		if($field.is(type[0]) && status.required) {
 			//如果不匹配
 			if(!fieldPattern.test(fieldValue)){
 				if(fieldRequired){
@@ -121,7 +121,7 @@
 		}
 
 		//如果是data-conditional="name"函数验证,函数返回true或者是false
-		if(fieldConditional !="undefined"){
+		if(fieldConditional !="undefined" && status.pattern){
 			if($.isFunction(fieldConditional)){
 				status.conditional=!!fieldConditional.call($field, fieldValue,options);
 			}else{
