@@ -2,7 +2,7 @@
 	if (typeof define === 'function' && define.amd ) {
 		define(['Zepto'], function(zepto){
 			// 返回构造函数
-			factory(zepto); // 初始化插件	
+			factory(zepto); // 初始化插件
 		});
 	}else if(typeof define === 'function' && define.cmd){
 		define(['Zepto'], function(require,exports,moudles){
@@ -45,7 +45,7 @@
 						},1500)
 					}
 				}
-		   
+
 			return {
 				show:show
 			}
@@ -58,9 +58,9 @@
 				pattern:true
 			},
 			log,//验证提示信息存储变量
-			
+
 			errorTipFormat=$.fn.mvalidate.errorTipFormat,//错误信息输出的格式化
-			
+
 			fieldValue =$.trim($field.val()) || "",
 
 		    //*****获取当前字段的data-validate
@@ -131,17 +131,17 @@
 			}
 		}
 
-     
+
 		//验证通过的信息所在对象
-		
+
 		log = errorTipFormat(fieldDescription.valid);
 		if(!status.required) {
 			log = errorTipFormat(fieldDescription.required);
-			
+
 		}else if(!status.pattern) {
 			log = errorTipFormat(fieldDescription.pattern);
-			
-			
+
+
 		} else if(!status.conditional) {
 			log =errorTipFormat(fieldDescription.conditional);
 		}
@@ -152,7 +152,7 @@
 			//如果是change 或者是keyup 同时是第一次输入的时候就不要验证
 			if((event.type=="keyup" || event.type=="change") && (!$describedShowElem.children().length || !$.trim($describedShowElem.text()))){
 
-			}else{					
+			}else{
 				$describedShowElem.html(log || '');
 				fieldValidTypeHand($field,status,options)
 			}
@@ -161,10 +161,11 @@
 		if(typeof(validation.each) == 'function') {
 			validation.each.call($field, event, status, options);
 		}
-		options.eachField.call($field, event, status, options);
 
-		if(status.required && status.pattern && status.conditional) {	
-			
+		typeof(options.eachField) === 'function' && options.eachField.call($field, event, status, options);
+
+		if(status.required && status.pattern && status.conditional) {
+
 			if(typeof(validation.valid) == 'function') {//二外拓展的
 				validation.valid.call($field, event, status, options);
 			}
@@ -180,9 +181,9 @@
 			if(typeof(validation.invalid) == 'function') {
 				validation.invalid.call($field, event, status, options);
 			}
-			options.eachInvalidField.call($field, event, status, options);	
+			typeof(options.eachInvalidField) === 'function' && options.eachInvalidField.call($field, event, status, options);
 		}
-		
+
 	/**
 	 * 如果是data-describedby="elemId"验证信息要显示的地方，类型3的验证:
 		 * 		第一元素获取焦点，keyUp的时候要一直验证，如果正确那么错误信息就隐藏，如果不正确，那么错误
@@ -193,12 +194,12 @@
 	};
 	$.extend($,{
 		mvalidateExtend:function(options){
-			return $.extend(extend, options);	
+			return $.extend(extend, options);
 		}
 	});
 
-	
-	
+
+
 	$.fn.mvalidate=function(options){
 		var defaults={
 			type:1,
@@ -224,14 +225,14 @@
 		opts.firstInvalid=false;
 		flag=opts.type==1 ? false : true;
 		return this.mvalidateDestroy().each(function(event) {
-			
+
 			var $form=$(this),
 				$fields;//存放当前表单下的所有元素;
 			if(!$form.is("form")) return;
 			opts.$form=$form;
-			$form.data(name,{"options":opts});
+			$form.data(namespace,{"options":opts});
 			$fields=$form.find(allTypes);
-			
+
 			//
 			if(flag && opts.onKeyup){
 				$fields.filter(type[0]).each(function() {
@@ -249,7 +250,7 @@
 						$(this).on('change.' + namespace, function(event) {
 							validateField.call(this, event, opts);
 						})
-					}	
+					}
 				})
 			}
 
@@ -264,7 +265,7 @@
 							formValid = false;
 						}
 					});
-					
+
 					if(formValid){
 						if(!opts.sendForm){
 							event.preventDefault();
@@ -272,7 +273,7 @@
 						if($.isFunction(opts.valid)){
 							opts.valid.call($form,event,opts);
 						}
-					//验证没有通过,禁用提交事件,以及绑定在这个elem上的其他事件	
+					//验证没有通过,禁用提交事件,以及绑定在这个elem上的其他事件
 					}else{
 						event.preventDefault();
 						event.stopImmediatePropagation();
@@ -280,20 +281,24 @@
 							opts.invalid.call($form,event,opts)
 						}
 					}
-					
+
 				})
 			}
 		})
 	};
-	$.fn.mvalidateDestroy=function(){
-		var $form=$(this),$fields,
-			dataValidate=$form.data(name);
-		if($form.is('form') && $.isPlainObject(dataValidate) && typeof(dataValidate.options.namespace) == 'string') {
-			$fields = $form.removeData(name).find(allTypes);
-			$fields.off('.' + dataValidate.options.namespace);
-		}	
-		return $form;
-	};
+	 $.fn.mvalidateDestroy=function(){
+        var $form=$(this),$fields,namespace="mvalidate",
+            dataValidate=$form.data(namespace);
+            
+        if(!dataValidate){
+            return $form;
+        }
+        if($form.is('form') && $.isPlainObject(dataValidate) && typeof(dataValidate.options.namespace) == 'string') {
+            $fields = $form.removeData(name).find(allTypes);
+            $fields.off('.' + dataValidate.options.namespace);
+        }   
+        return $form;
+    };
 	$.fn.mvalidate.errorTipFormat=function(text){
 		return '<div class="zvalid-resultformat">'+text+'</div>';
 	}

@@ -293,8 +293,12 @@
 		})
 	};
 	$.fn.mvalidateDestroy=function(){
-		var $form=$(this),$fields,
-			dataValidate=$form.data(name);
+		var $form=$(this),$fields,namespace="mvalidate",
+            dataValidate=$form.data(namespace);
+            
+        if(!dataValidate){
+            return $form;
+        }
 		if($form.is('form') && $.isPlainObject(dataValidate) && typeof(dataValidate.options.nameSpace) == 'string') {
 			$fields = $form.removeData(name).find(allTypes);
 			$fields.off('.' + dataValidate.options.nameSpace);

@@ -230,7 +230,7 @@
 				$fields;//存放当前表单下的所有元素;
 			if(!$form.is("form")) return;
 			opts.$form=$form;
-			$form.data(name,{"options":opts});
+			$form.data(namespace,{"options":opts});
 			$fields=$form.find(allTypes);
 
 			//
@@ -286,15 +286,19 @@
 			}
 		})
 	};
-	$.fn.mvalidateDestroy=function(){
-		var $form=$(this),$fields,
-			dataValidate=$form.data(name);
-		if($form.is('form') && $.isPlainObject(dataValidate) && typeof(dataValidate.options.namespace) == 'string') {
-			$fields = $form.removeData(name).find(allTypes);
-			$fields.off('.' + dataValidate.options.namespace);
-		}
-		return $form;
-	};
+	 $.fn.mvalidateDestroy=function(){
+        var $form=$(this),$fields,namespace="mvalidate",
+            dataValidate=$form.data(namespace);
+            
+        if(!dataValidate){
+            return $form;
+        }
+        if($form.is('form') && $.isPlainObject(dataValidate) && typeof(dataValidate.options.namespace) == 'string') {
+            $fields = $form.removeData(name).find(allTypes);
+            $fields.off('.' + dataValidate.options.namespace);
+        }   
+        return $form;
+    };
 	$.fn.mvalidate.errorTipFormat=function(text){
 		return '<div class="zvalid-resultformat">'+text+'</div>';
 	}
