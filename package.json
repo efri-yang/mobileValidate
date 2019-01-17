@@ -2,10 +2,10 @@
   "name": "mvalidate",
   "version": "1.0.0",
   "description": "移动端的验证控件",
-  "author":{
-      "name":"散崖",
-      "email":"948061564@qq.com",
-      "blog":"http://wnworld.com/"
+  "author": {
+    "name": "散崖",
+    "email": "948061564@qq.com",
+    "blog": "http://wnworld.com/"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -22,4 +22,3 @@
     "grunt-contrib-clean": "^0.6.0"
   }
 }
-
